@@ -1,15 +1,15 @@
-import random
+import secrets, string
 
 def passgen():
-    s = 'abcdefghijkl\
-        mnopqrstuvwxyz1234\
-            567890ABCDEFGHIJK\
-                LMNOPQRSTUVWXYZ!@#$%^&*()_-+=\
-                ;/,.'
+    alphabet = string.ascii_letters + string.digits
+    while True:
+        password = ''.join(secrets.choice(alphabet) for i in range(10))
+        if (any(c.islower() for c in password)
+                and any(c.isupper() for c in password)
+                and sum(c.isdigit() for c in password) >= 3):
+            break
 
-    passlen = 16
-    password = "".join(random.sample(s, passlen))
-    return(password)
+    return password
 
 def Add(N, A):
     f = open('doc/passwords.txt', 'a')
@@ -21,5 +21,5 @@ def Add(N, A):
 if __name__ == "__main__":
     place = input("What is this for?> ")
     password = passgen()
-    print(password)
-    Add(place, password)
+    print(str(password))
+    Add(place, str(password))
