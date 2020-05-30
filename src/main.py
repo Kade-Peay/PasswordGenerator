@@ -12,7 +12,7 @@ def passgen():
     return password
 
 def Add(N, A):
-    f = open('doc/passwords.txt', 'a')
+    f = open('C:/Users/kadep/Password_Generator/doc/passwords.txt', 'a')
     f.write('\n')
     f.write(N + ":" + A)
     f.close
